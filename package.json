@@ -1,0 +1,24 @@
+{
+  "name": "frontend-starter",
+  "version": "0.0.0",
+  "description": "Example of npm scripts based build tooling",
+  "scripts": {
+    "start": "npm run serve & npm run watch-styles",
+    "serve": "static -a 0.0.0.0 -c 0 .",
+    "watch-styles": "chokidar --initial -c 'npm run build-styles' '**/*.less'",
+    "build-styles": "npm run compile-less && npm run autoprefixer",
+    "build-style-prod": "npm run build-styles && npm run minify-css",
+    "compile-less": "lessc less/main.less bundle.css",
+    "autoprefixer": "autoprefixer bundle.css",
+    "minify-css": "cleancss --skip-aggressive-merging --skip-restructuring bundle.css -o bundle.css"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "autoprefixer": "^5.1.1",
+    "chokidar-cli": "^0.2.1",
+    "clean-css": "^3.2.10",
+    "less": "^2.5.1",
+    "node-static": "^0.7.6"
+  }
+}
